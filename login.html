@@ -10,26 +10,6 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="login.css">
   </head>
-  <style>
-    html,
-    body {
-      height: 100%;
-      text-align: center;
-    }
-
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .form-signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-    }
-  </style>
   <body>
     <div id="app">
       <div class="container">
@@ -71,37 +51,8 @@
       integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
       crossorigin="anonymous"></script>
 
-    <script type="module">
-      import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.30/vue.esm-browser.min.js";
-
-      createApp({
-        data(){
-          return{
-            user:{
-              username:'',
-              password:''
-            }
-          }
-        },
-        methods:{
-          login(){
-            const url = "https://vue3-course-api.hexschool.io/v2/admin/signin";
-            const path = "threecats";
-            axios.post(url,this.user).then(res=>{
-              const { token,expired } = res.data;
-              console.log(token)
-              // 寫入cookie:token,expires 設置有效時間
-              document.cookie = `hexToken=${token};expires=${new Date(expired)}`;
-              window.location = 'index.html'
-            }).catch(err =>{
-              alert(err.data.message);
-            })
-          }
-        }
-      }).mount('#app')
-
-
-    </script>
+      <script type="module" src="./javascript/login.js"></script>
+      
   </body>
 
 </html>
